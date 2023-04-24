@@ -1,0 +1,27 @@
+﻿@model EntityLayer.Concrete.Admin
+@{
+    ViewData["Title"] = "AddAdmin";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Admin Oluştur</h2>
+<br />
+@using (Html.BeginForm("AddAdmin", "Admin", FormMethod.Post))
+{
+    <br />
+    @Html.Label("Kullanıcı Adı")
+    <br />
+    @Html.TextBoxFor(b => b.UserName, new { @class = "form-control", placeholder = "Kullanıcı Adı Giriniz." })
+    <br />
+    @Html.Label("Parola")
+    <br />
+    @Html.TextBoxFor(b => b.Password, new { @class = "form-control", placeholder = "Parola Giriniz." })
+    <br />
+    @Html.Label("Rol")
+    <br />
+    @Html.TextBoxFor(b => b.Role, new { @class = "form-control", placeholder = "Rol Giriniz." })
+    <br />
+    <button class="btn btn-outline-primary">Oluştur</button>
+}
+
+

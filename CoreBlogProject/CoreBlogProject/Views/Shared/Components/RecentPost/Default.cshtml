@@ -1,0 +1,22 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+<div class="single-gd tech-btm">
+    <h4>Recent Post</h4>
+    @foreach (var i in Model)
+    {
+        <div class="blog-grids">
+            <div class="blog-grid-left">
+                <a href="~/Blog/BlogDetail/@i.BlogID">
+                    <img src="~/WebLog/images/@i.BlogImage" class="img-fluid" alt="">
+                </a>
+            </div>
+            <div class="blog-grid-right">
+
+                <h5>
+                    <a href="~/Blog/BlogDetail/@i.BlogID">@i.BlogTitle</a>
+                </h5>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    }
+</div>
+

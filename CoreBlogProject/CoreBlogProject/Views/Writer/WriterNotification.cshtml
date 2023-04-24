@@ -1,0 +1,31 @@
+﻿@model List<Notification>
+@{
+    ViewData["Title"] = "WriterNotification";
+    Layout = "~/Views/Shared/_Writer.cshtml";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th> Başlık </th>
+            <th> İçerik </th>
+            <th> Tarih </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var uyari in Model)
+        {
+            <tr>
+                <td>
+                    @uyari.NotificationTitle
+                </td>
+                <td>
+                    @(uyari.NotificationDetails.Length > 20 ? uyari.NotificationDetails.Substring(0, uyari.NotificationDetails.Substring(0,20).LastIndexOf(" "))+"..." : uyari.NotificationDetails + "...")
+                </td>
+                <td>
+                    @Convert.ToDateTime(uyari.NotificationDate).ToString("dd/MM/yyyy")
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

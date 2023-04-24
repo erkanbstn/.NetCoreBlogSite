@@ -1,0 +1,36 @@
+﻿@model Blog
+
+@{
+    ViewData["Title"] = "UpdateBlog";
+    Layout = "~/Views/Shared/_Writer.cshtml";
+}
+
+
+<h2>Blog Düzenle</h2>
+<br />
+@using (Html.BeginForm("UpdateBlog", "Writer", FormMethod.Post))
+{
+    <br />
+    @Html.Label("Blog ID")
+    <br />
+    @Html.TextBoxFor(b => b.BlogID, new { @class = "form-control", placeholder = "Blog ID Giriniz." })
+    <br />
+    @Html.Label("Blog Başlığı")
+    <br />
+    @Html.TextBoxFor(b => b.BlogTitle, new { @class = "form-control", placeholder = "Blog Başlığı Giriniz." })
+    <br />
+    @Html.ValidationMessageFor(n => n.BlogTitle)
+    <br />
+    @Html.Label("Blog İçeriği")
+    <br />
+    @Html.TextAreaFor(b => b.BlogContent, 2, 5, new { @class = "form-control", placeholder = "Blog İçeriği Giriniz." })
+    <br />
+    @Html.ValidationMessageFor(n => n.BlogContent)
+    <br />
+    @Html.Label("Blog Kategori")
+    <br />
+    @Html.DropDownListFor(b => b.CategoryID, (List<SelectListItem>)ViewBag.kategori, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-outline-primary">Kaydet</button>
+}
+

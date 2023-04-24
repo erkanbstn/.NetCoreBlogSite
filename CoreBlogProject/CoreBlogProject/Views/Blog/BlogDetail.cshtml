@@ -1,0 +1,124 @@
+﻿@using EntityLayer.Concrete
+@model List<Blog>
+@{
+    ViewData["Title"] = "BlogDetail";
+    Layout = "~/Views/Shared/_User.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="zxx">
+<body>
+
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Ana Sayfa</a>
+        </li>
+        <li class="breadcrumb-item active">Blog Detayı </li>
+    </ol>
+    <section class="banner-bottom">
+        <!--/blog-->
+        <div class="container">
+            <div class="row">
+                <!--left-->
+                <div class="col-lg-8 left-blog-info-w3layouts-agileits text-left">
+
+                    <div class="blog-grid-top">
+                        @foreach (var i in Model)
+                        {
+                            <div class="b-grid-top">
+                                <div class="blog_info_left_grid">
+                                    <a href="single.html">
+                                        <img src="~/WebLog/images/@i.BlogImage" class="img-fluid" alt="">
+                                    </a>
+                                </div>
+                                <div class="blog-info-middle">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="far fa-calendar-alt"></i> @i.CreateDate.ToString("dd/MMMM/yyyy")
+                                            </a>
+                                        </li>
+                                        <li class="mx-2">
+                                            <a href="#">
+                                                <i class="far fa-thumbs-up"></i> 201 Likes
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="far fa-comment"></i> 15 Comments
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h3>
+                                <a href="single.html">@i.BlogTitle</a>
+                            </h3>
+                            <span> Yazan :  @ViewBag.yazar</span>
+                            <br />
+                            <br />
+                            <p>
+                                @i.BlogContent
+                            </p>
+                        }
+                    </div>
+
+                    @*@await Html.PartialAsync("~/Views/Comment/CommentByBlog.cshtml")*@
+                    @await Component.InvokeAsync("CommentByBlog", new { id = ViewBag.id })
+
+
+                    <div class="comment-top">
+                        <h4>Leave a Comment</h4>
+                        <div class="comment-bottom">
+                            <form action="~/Blog/YorumGonder" method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="completed">
+                                <input class="form-control" type="hidden" name="BlogID" value="@ViewBag.id"  required="">
+                                <input class="form-control" type="text" name="CommentUserName" placeholder="İsim" required="">
+                                <input class="form-control" type="text" name="CommentTitle" placeholder="Başlık" required="">
+                                <textarea class="form-control" name="CommentContent" placeholder="Mesaj..." required=""></textarea>
+                                <button type="submit" class="btn btn-primary submit">Yorum Yap</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!--//left-->
+                <!--right-->
+                <aside class="col-lg-4 agileits-w3ls-right-blog-con text-right">
+                    <div class="right-blog-info text-left">
+                        <div class="tech-btm">
+                            <img src="~/WebLog/images/banner1.jpg" class="img-fluid" alt="">
+                        </div>
+                        <div class="tech-btm">
+                            <h4>Bültenimize Kayıt Olun</h4>
+                            <p>Her Bildirimden Anında Haberiniz Olsun! </p>
+                            <form action="~/Blog/MailGonder" method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="completed">
+                                <input type="email" placeholder="Email Giriniz" name="Mail" required="">
+                                <input type="submit" value="Kayıt Ol">
+                            </form>
+
+                        </div>
+                        @await Component.InvokeAsync("CategoryListBlog")
+                        @await Component.InvokeAsync("WriterOtherPost", new { id = ViewBag.id })
+                        @await Component.InvokeAsync("RecentPost")
+
+
+
+
+
+
+
+                    </div>
+
+                </aside>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+

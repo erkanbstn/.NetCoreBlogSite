@@ -1,0 +1,131 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Panel</title>
+
+    <link href="~/ArtAdmin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/ArtAdmin/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="~/ArtAdmin/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="~/ArtAdmin/css/animate.css" rel="stylesheet">
+    <link href="~/ArtAdmin/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <img alt="image" class="rounded-circle" src="~/ArtAdmin/img/profile_small.jpg" />
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="block m-t-xs font-bold">Erkan Bostan</span>
+                                <span class="text-muted text-xs block">Yazılım Mühendisi <b class="caret"></b></span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a class="dropdown-item" href="login.html">Siteye Dön</a></li>
+                                <li><a class="dropdown-item" href="login.html">Çıkış Yap</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> </a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Grafikler</span></a>
+                    </li>
+                    <li>
+                        <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Mesajlar </span></a>
+                    </li>
+                    <li>
+                        <a href="metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Metrikler</span>  </a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Forms</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">Kategoriler</span> </a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Bloglar</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-globe"></i> <span class="nav-label">Yorumlar</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">Yazarlar</span></a>
+                    </li>
+                    <li>
+                        <a href="grid_options.html"><i class="fa fa-laptop"></i> <span class="nav-label">İletişim</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Hakkımızda</span></a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/Chartllar/Index"><i class="fa fa-sitemap"></i> <span class="nav-label">İstatistikler </span></a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+            <br />
+            @RenderBody()
+            <div class="footer">
+                <div>
+                    <strong>Design By</strong> Erkan Bostan
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- Mainly scripts -->
+    <script src="~/ArtAdmin/js/jquery-3.1.1.min.js"></script>
+    <script src="~/ArtAdmin/js/popper.min.js"></script>
+    <script src="~/ArtAdmin/js/bootstrap.js"></script>
+    <script src="~/ArtAdmin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/ArtAdmin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Peity -->
+    <script src="~/ArtAdmin/js/plugins/peity/jquery.peity.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="~/ArtAdmin/js/inspinia.js"></script>
+    <script src="~/ArtAdmin/js/plugins/pace/pace.min.js"></script>
+
+    <!-- iCheck -->
+    <script src="~/ArtAdmin/js/plugins/iCheck/icheck.min.js"></script>
+
+    <!-- Peity -->
+    <script src="~/ArtAdmin/js/demo/peity-demo.js"></script>
+
+    <script>
+$(document).ready(function(){
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });</script>
+
+    @await RenderSectionAsync("scripts") 
+</body>
+
+</html>
+

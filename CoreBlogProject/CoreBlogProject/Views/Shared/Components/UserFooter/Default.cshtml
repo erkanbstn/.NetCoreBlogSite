@@ -1,0 +1,127 @@
+﻿@using EntityLayer.Concrete
+@model List<Blog>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 footer-grid-agileits-w3ls text-left">
+                <h3>HAKKIMIZDA</h3>
+                <p>İnsanların Yazılım Konusunda Kendini Geliştirebilmesine Bir Faydamızın Bulunmasını İstediğimizden Dolayı Kendimizce İnsanlara Yardım Edebileceğimizi Düşündüğümüz Bir Yöntemi İzleme Prensibine Dayalı .Net Core Blog WebSitemiz. </p>
+                <div class="read">
+                    <a href="single.html" class="btn btn-primary read-m">Daha Fazla</a>
+                </div>
+            </div>
+            <div class="col-lg-4 footer-grid-agileits-w3ls text-left">
+
+                <div class="tech-btm">
+                    <h3>Son Paylaşımlar</h3>
+                    @foreach (var i in Model)
+                    {
+                        <div class="blog-grids row mb-3">
+                            <div class="col-md-5 blog-grid-left">
+                                <a href="~/WebLog/BlogDetail/@i.BlogID">
+                                    <img src="~/WebLog/images/@i.BlogImage" class="card-img-top img-fluid" alt="">
+                                </a>
+                            </div>
+                            <div class="col-md-7 blog-grid-right">
+
+                                <h5>
+                                    <a href="~/WebLog/BlogDetail/@i.BlogID">@i.BlogTitle </a>
+                                </h5>
+                                <div class="sub-meta">
+                                    <span>
+                                        <i class="far fa-clock"></i> @Convert.ToDateTime(i.CreateDate).ToString("dd/MMMM/yyyy")
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+            <div class="col-lg-4 subscribe-main footer-grid-agileits-w3ls text-left">
+                <h2>Size Ulaşabilmemizi Sağlayın</h2>
+                <div class="subscribe-main text-left">
+                    <div class="subscribe-form">
+                        <form action="~/Blog/MailGonder" method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="completed">
+                            <input type="email" placeholder="Email Giriniz" name="Mail" required="">
+                            <br />
+                            <br />
+
+                            <input type="submit" class="btn btn-primary submit" value="Gönder">
+                        </form>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <p>
+                        Gizliliğinize saygı duyuyoruz. Asla spam yok!
+                    </p>
+                </div>
+            </div>
+            <div class="footer-cpy text-center">
+                <div class="footer-social">
+                    <div class="copyrighttop">
+                        <ul>
+                            <li class="mx-3">
+                                <a class="facebook" href="https://www.facebook.com/erkanbstn">
+                                    <i class="fab fa-facebook-f"></i>
+                                    <span>Facebook</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="facebook" href="https://www.instagram.com/erkanbssn/">
+                                    <i class="fab fa-instagram"></i>
+                                    <span>Instagram</span>
+                                </a>
+                            </li>
+                            <li class="mx-3">
+                                <a class="facebook" href="https://github.com/erkanbstn">
+                                    <i class="fab fa-github"></i>
+                                    <span>GitHub+</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="facebook" href="https://www.linkedin.com/in/erkan-bostan-11257a210/">
+                                    <i class="fab fa-linkedin-in"></i>
+                                    <span>LinkedIn</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="w3layouts-agile-copyrightbottom">
+                    <p>
+                        © 2022 .Net Core Blog. All Rights Reserved | Design by
+                        <a href="http://erkanbostan.com/">Erkan Bostan</a>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="~/WebLog/js/jquery-2.2.3.min.js"></script>
+<script src="~/WebLog/js/move-top.js"></script>
+<script src="~/WebLog/js/easing.js"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 900);
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $().UItoTop({
+            easingType: 'easeOutQuart'
+        });
+
+    });
+</script>
+<a href="#home" class="scroll" id="toTop" style="display: block;">
+    <span id="toTopHover" style="opacity: 1;"> </span>
+</a>
+<script src="~/WebLog/js/bootstrap.js"></script>
